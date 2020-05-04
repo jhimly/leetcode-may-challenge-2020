@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        //check for empty ransom note string,return true bcz null is a subset 
+//         if(ransomNote==NULL or ransomNote.trim().isEmpty())
+//         {
+//             return true;
+//         }
+//         if(magazine==NULL or magazine.trim().isEmpty())
+//         {
+//             return false;
+//         }
+        
+//         vector<int> freq(26,0);
+//         for(int i:magazine)
+//         {
+//             freq[magazine[i]-'a']++;
+//         }
+//         for (int i = 0; i < ransomNote.length(); i++) {
+//             if (freq[ransomNote[i] - 'a']--  <= 0) {
+//                 return false;
+//             }
+//         }
+        
+//         return true;
+         vector<int> freq(26,0);
+        for(int i=0;i<magazine.size();i++)
+          freq[magazine[i]-'a']++;
+        for(int i=0;i<ransomNote.size();i++)
+          if(freq[ransomNote[i]-'a']--<=0)
+            return 0;
+      return 1;
+    }
+};
