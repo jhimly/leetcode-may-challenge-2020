@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        vector<bool> jewel(256,false);
+        for(char c:J)
+            jewel[c]=true;
+        int result = 0;
+        for(char c:S)
+        {
+            if(jewel[c])
+                result++;
+        }
+        return result;
+    }
+};
