@@ -1,0 +1,37 @@
+#Day 13 - Remove k digits
+
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        if(num.length()==k) return "0";
+        stack<char> st;
+        for(char c:num) {
+            while(k && !st.empty() && int(st.top())>int(c)) {
+                st.pop();
+                k--;
+            }
+            st.push(c);
+        }
+        while(k--) {
+            st.pop();
+        }
+        
+        stack<char> t;        
+        while(!st.empty()) {
+            t.push(st.top());
+            st.pop();
+        }
+        while(t.top()=='0' && t.size()!=1){
+            t.pop();
+        }
+        num = "";
+        while(!t.empty()) {
+           num.push_back(t.top());
+            t.pop();
+        }
+        return num;
+        
+        
+        
+    }
+};
